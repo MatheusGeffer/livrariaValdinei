@@ -1,4 +1,6 @@
 package com.example.projetoValdinei.emprestimos;
 
-public interface EmprestimosRepository {
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface EmprestimosRepository extends JpaRepository<Emprestimos, Long> {
 }

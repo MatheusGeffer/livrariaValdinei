@@ -1,4 +1,6 @@
 package com.example.projetoValdinei.livros;
 
-public interface LivrosRepository {
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface LivrosRepository extends JpaRepository<Livros, Long> {
 }
