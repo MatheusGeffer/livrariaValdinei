@@ -5,6 +5,8 @@ $(document).ready(function() {
             data.forEach(function(usuario) {
                 $('#usuariosList').append(`<li class="list-group-item">${usuario.cpf} - ${usuario.nome} ${usuario.sobrenome}</li>`);
             });
+        }).fail(function() {
+            alert("Erro ao buscar usuários.");
         });
     }
 
@@ -25,6 +27,9 @@ $(document).ready(function() {
             success: function() {
                 fetchUsuarios();
                 $('#usuarioForm')[0].reset();
+            },
+            error: function() {
+                alert("Erro ao adicionar usuário.");
             }
         });
     });

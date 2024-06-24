@@ -21,21 +21,19 @@ public class UsuariosService {
     }
 
     public Optional<Usuarios> getUsuarioByCpf(String cpf) {
-        return usuariosRepository.findById(cpf);
+        return usuariosRepository.findByCpf(cpf);
     }
 
     public Usuarios updateUsuario(String cpf, Usuarios usuarioDetails) {
-        Usuarios usuario = usuariosRepository.findById(cpf).orElseThrow(() -> new RuntimeException("Usuário não encontrado com CPF: " + cpf));
-
+        Usuarios usuario = usuariosRepository.findByCpf(cpf).orElseThrow(() -> new RuntimeException("Usuário não encontrado com CPF: " + cpf));
         usuario.setNome(usuarioDetails.getNome());
         usuario.setSobrenome(usuarioDetails.getSobrenome());
         usuario.setSenha(usuarioDetails.getSenha());
-
         return usuariosRepository.save(usuario);
     }
 
     public void deleteUsuario(String cpf) {
-        Usuarios usuario = usuariosRepository.findById(cpf).orElseThrow(() -> new RuntimeException("Usuário não encontrado com CPF: " + cpf));
+        Usuarios usuario = usuariosRepository.findByCpf(cpf).orElseThrow(() -> new RuntimeException("Usuário não encontrado com CPF: " + cpf));
         usuariosRepository.delete(usuario);
     }
 }
